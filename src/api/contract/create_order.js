@@ -39,7 +39,6 @@ module.exports = (efx, symbol, amount, price, validFor) => {
   // create order object
   const order = {
     makerAddress: efx.get('account').toLowerCase(),
-    takerAddress: config.ethfinexAddress.toLowerCase(),
 
     feeRecipientAddress: efx.config.ethfinexAddress.toLowerCase(),
     senderAddress: config.ethfinexAddress.toLowerCase(),
