@@ -232,7 +232,7 @@ In case you're signing the requests yourself:
 const sig = await efx.sign(parseInt(orderId).toString(16))
 const sigConcat = ethUtils.toRpcSig(sig.v, ethUtils.toBuffer(sig.r), ethUtils.toBuffer(sig.s))
 
-await efx.cancelOrder(parseInt(orderId), sigConcat)
+await efx.cancelOrder(orderId, sigConcat)
 ```
 
 ### Account History
