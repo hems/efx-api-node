@@ -34,7 +34,7 @@ it('create and sign a buy order', async () => {
   const amount = 0.8
   const price = 274
 
-  const order = efx.contract.createOrder(symbol, amount, price)
+  const order = await efx.contract.createOrder(symbol, amount, price)
 
   const signed = await efx.sign.order(order)
 
@@ -62,7 +62,7 @@ it('create and sign a sell order', async () => {
   const amount = -1.5
   const price = 300
 
-  const order = efx.contract.createOrder(symbol, amount, price)
+  const order = await efx.contract.createOrder(symbol, amount, price)
 
   const signed = await efx.sign.order(order)
 

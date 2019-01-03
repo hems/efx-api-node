@@ -1,7 +1,11 @@
 const {assetDataUtils, generatePseudoRandomSalt} = require('@0xproject/order-utils')
 const BigNumber = require('bignumber.js');
 
-module.exports = (efx, symbol, amount, price, validFor) => {
+module.exports = async (efx, symbol, amount, price, validFor) => {
+
+  // refresh settleSpread
+  await efx.loadConfig()
+
   const { web3, config } = efx
 
   // symbols are always 3 letters

@@ -322,7 +322,7 @@ it('efx.submitSignedOrder(order)', async () => {
   const amount = -0.1
   const price = 10000
 
-  const order = efx.contract.createOrder(symbol, amount, price)
+  const order = await efx.contract.createOrder(symbol, amount, price)
 
   const signedOrder = await efx.sign.order(order)
 
