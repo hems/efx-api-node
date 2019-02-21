@@ -51,12 +51,14 @@ describe('~ efx-api-node', async () => {
   })
 
   describe('Account', () => {
-    require('./account')
+    //require('./account')
   })
 
   describe('Signing', () => {
     require('./signing')
   })
+
+  return
 
   describe('Blockchain API', () => {
     // comment the line below if you want to skip blockchain tests

@@ -1,5 +1,4 @@
 const bind = require('./lib/bind_api')
-const defaultConfig = require('./config')
 const Web3 = require('web3')
 const aware = require('aware')
 const BigNumber = require('bignumber.js')
@@ -16,15 +15,11 @@ module.exports = async (web3, userConfig = {}) => {
   // adds key-value storage and event emitting capabilities
   aware(efx)
 
-  // merge user config with default config
-  // needed for the efx.getConfig method
-  efx.config = Object.assign({}, defaultConfig, userConfig)
+  // load configuration from exchange and merge with user config and the default
+  // config
+  await efx.loadConfig(userConfig)
 
-  // ethfinex exchange config
-  const exchangeConf = await efx.getConfig()
-
-  //user config has priority
-  efx.config = Object.assign({}, defaultConfig, exchangeConf, userConfig )
+  console.log( "config ->", efx.config)
 
   // working towards being as compatible as possible
   efx.isBrowser = typeof window !== 'undefined'
