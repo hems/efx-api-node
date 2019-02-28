@@ -1,39 +1,17 @@
 {
   "name": "efx-api-node",
   "version": "1.2.9",
-  "main": "src/efx.js",
-  "contributors": [
-    "Henrique Matias <hems.inlet@gmail.com>",
-    "Will Harborne <will.harborne@gmail.com>"
-  ],
-  "standard": {
-    "ignore": [
-      "/examples",
-      "/dist"
-    ]
-  },
+  "main": "./src/efx.js",
   "scripts": {
-    "lint": "standard",
-    "lint:fix": "standard --fix",
-    "test:rpc": "ganache-cli --defaultBalanceEther 100000000",
-    "test:contracts:compile": "node ./test/helpers/compile.js",
-    "test": "mocha ./test/index.js --timeout 1200000000",
-    "test:watch": "mocha ./test/index.js --watch ./ --timeout 1200000000",
-    "test:web": "mochify ./test/index.js --timeout 1200000000",
-    "test:web:watch": "mochify ./test/index.js --watch --timeout 1200000000",
-    "build": "npm run build:web:browserify; npm run build:web:minify; npm run build:web:hash",
-    "build:web:browserify": "del ./dist/*.js; browserify ./src/efx.js --standalone EFX -o ./dist/efx.js",
-    "build:web:minify": "node-minify --compressor uglify-es --input './dist/efx.js' --output './dist/efx.min.js'",
-    "build:web:hash": "hash-filename ./dist/efx*.js;del ./dist/{efx.js,efx.min.js}",
-    "build:web:run": "browserify --debug ./src/efx.js --standalone EFX | browser-run --port 2222"
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "test": "truffle test ./test/index.js",
+    "test:watch": "nodemon --exec 'truffle test ./test/index.js'"
   },
-  "keywords": [
-    "bitfinex",
-    "ethfinex",
-    "ethereum"
-  ],
-  "homepage": "https://github.com/ethfinex/efx-api-node",
-  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ethfinex/efx-api-node.git"
+  },
   "dependencies": {
     "0x.js": "^0.38.4",
     "@0x/order-utils": "^6.1.0",
@@ -48,6 +26,7 @@
     "web3": "1.0.0-beta.33"
   },
   "devDependencies": {
+    "truffle": "^5.0.5",
     "browser-run": "^5.0.0",
     "browserify": "^16.2.2",
     "chai": "^4.1.2",

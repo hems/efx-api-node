@@ -46,6 +46,8 @@ it("await efx.account.tokenBalance('USD') // return USD balance", async () => {
 // NOTE:
 //  - Unlocking is necessary in order to sign on node.js
 //  - MetaMask will throw a pop up at you
-it('efx.account.unlock(passwd) // unlock account', async () => {
-  return efx.account.unlock('password')
-})
+//
+//  commenting while trying this out on TESTRPC
+//it('efx.account.unlock(passwd) // unlock account', async () => {
+  //return efx.account.unlock('password')
+//})
