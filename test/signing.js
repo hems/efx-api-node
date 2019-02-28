@@ -15,7 +15,7 @@ before(async () => {
 })
 
 it('efx.sign(toSign) // sign arbitrary objects', async () => {
-  await efx.account.unlock('password')
+  //await efx.account.unlock('password')
 
   // when signing hex values we should remove the 0x
   const message = '0xa4d9a634348b09f23a5bbd3568f8b12b91ff499c'
@@ -28,7 +28,7 @@ it('efx.sign(toSign) // sign arbitrary objects', async () => {
 })
 
 it('create and sign a buy order', async () => {
-  await efx.account.unlock('password')
+  //await efx.account.unlock('password')
 
   const symbol = 'ETHUSD'
   const amount = 0.8
@@ -43,7 +43,7 @@ it('create and sign a buy order', async () => {
     Math.trunc(10 ** efx.config['0x'].tokenRegistry.USD.decimals * sellAmount)
   ).toString(10)
 
-  assert.equal(signed.makerTokenAddress, efx.config['0x'].tokenRegistry.USD.wrapperAddress)
+  assert.equal(signed.makerTokenAddress.toUpperCase(), efx.config['0x'].tokenRegistry.USD.wrapperAddress.toUpperCase())
   assert.equal(signed.makerTokenAmount, makerAmount)
 
   const buyAmount = amount
@@ -51,12 +51,12 @@ it('create and sign a buy order', async () => {
     Math.trunc(10 ** efx.config['0x'].tokenRegistry.ETH.decimals * buyAmount)
   ).toString(10)
 
-  assert.equal(signed.takerTokenAddress, efx.config['0x'].tokenRegistry.ETH.wrapperAddress)
+  assert.equal(signed.takerTokenAddress.toUpperCase(), efx.config['0x'].tokenRegistry.ETH.wrapperAddress.toUpperCase())
   assert.equal(signed.takerTokenAmount, takerAmount)
 })
 
 it('create and sign a sell order', async () => {
-  await efx.account.unlock('password')
+  //await efx.account.unlock('password')
 
   const symbol = 'ETHUSD'
   const amount = -1.5
@@ -71,7 +71,7 @@ it('create and sign a sell order', async () => {
     Math.trunc(10 ** efx.config['0x'].tokenRegistry.ETH.decimals * sellAmount)
   ).toString(10)
 
-  assert.equal(signed.makerTokenAddress, efx.config['0x'].tokenRegistry.ETH.wrapperAddress)
+  assert.equal(signed.makerTokenAddress.toUpperCase(), efx.config['0x'].tokenRegistry.ETH.wrapperAddress.toUpperCase())
   assert.equal(signed.makerTokenAmount, makerAmount)
 
   const buyAmount = Math.abs(amount * price)
@@ -79,7 +79,7 @@ it('create and sign a sell order', async () => {
     Math.trunc(10 **efx.config['0x'].tokenRegistry.USD.decimals * buyAmount)
   ).toString(10)
 
-  assert.equal(signed.takerTokenAddress, efx.config['0x'].tokenRegistry.USD.wrapperAddress)
+  assert.equal(signed.takerTokenAddress.toUpperCase(), efx.config['0x'].tokenRegistry.USD.wrapperAddress.toUpperCase())
   assert.equal(signed.takerTokenAmount, takerAmount)
 
   // TODO:

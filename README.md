@@ -462,6 +462,9 @@ $ npm run test:watch
 #### On node.js
 
 ```bash
+$ npm run compile # compile contracts
+$ npm run migrate # deploy contracts to testrpc
+$ testrpc --networkId 3 # starts testrpc with Ropsten's networkId
 $ npm run test
 ```
 
